@@ -10,7 +10,7 @@ exports.crearUsuario = async (req, res) => {
     //* Revisar si hay errores
     const errores = validationResult(req);
     if (!errores.isEmpty()) {
-        return res.status(400).json({errores: errores.array()})
+        return res.status(400).json({ errores: errores.array() })
     }
 
     //* Extraer email y password
@@ -43,12 +43,12 @@ exports.crearUsuario = async (req, res) => {
 
         //* firmar el token
         jwt.sign(payload, process.env.SECRETA, {
-            expiresIn: 3600000,
-        }, (error, token) =>{
+            expiresIn: 3600,
+        }, (error, token) => {
             if (error) throw error;
 
             //* Mensaje de confirmacion
-            res.json({ token});
+            res.json({ token });
 
         });
 
