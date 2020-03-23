@@ -37,15 +37,16 @@ exports.autenticarUsuario = async (req, res) => {
             }
         };
 
-        //*Firma JWT
-        jwt.sign(payload, process.env.SECRETA), {
-            expiresIn: 3600 //1 hora
+        //* firmar el token
+        jwt.sign(payload, process.env.SECRETA, {
+            expiresIn: 3600,
         }, (error, token) => {
             if (error) throw error;
 
             //* Mensaje de confirmacion
-            res.json({ token })
-        }
+            res.json({ token });
+
+        });
 
     } catch (error) {
         console.log(error);
