@@ -12,7 +12,7 @@ conectarDB();
 app.use(cors());
 
 // Habilitar express.json
-app.use( express.json({ extended: true }));
+app.use(express.json({ extended: true }));
 
 // puerto de la app
 const port = process.env.PORT || 4000;

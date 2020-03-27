@@ -52,3 +52,17 @@ exports.autenticarUsuario = async (req, res) => {
         console.log(error);
     }
 }
+
+//* Obtiene que ususario esta autenticado
+exports.usuarioAutenticado = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.usuario.id).select('-password');
+        res.json({ usuario });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Hubo un error' });
+    }
+}
+
+
+//TODO: Busca el error del porque no quizo guardar el ususario
